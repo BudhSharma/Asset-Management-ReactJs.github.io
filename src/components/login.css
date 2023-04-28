@@ -1,0 +1,121 @@
+:root{
+
+    --dark-blue : #003FB9;
+    --sea-deep :#0B3558;
+} 
+ 
+
+
+ .form_data .profile{
+    width:200px;
+    height:200px;
+    background:#EFEFEF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    
+}
+
+.form_data .form_heading .heading{
+    color:var(--sea-deep);
+    font-weight:bold;
+}
+
+.form_data .form_heading  p{
+    color:var(--sea-deep);
+    font-weight:600;
+}
+
+
+.form_data form .form_group{
+    width:100%;
+}
+
+.form_data form .form_group.password-box{
+    position:relative;
+    /* border:1px solid red; */
+}
+
+.form_data form .form_group.password-box .showpass{
+    position:absolute;
+    right:10px;
+    top:calc(50% - 25%);
+    z-index:999;
+    /* border:1px solid blue; */
+    width:max-content;
+}
+.form_data form .form_group > *{
+    width:100%;
+}
+
+.form_data form .form_group a.forgot-pass{
+    width:max-content;
+    font-weight:bold;
+    color:var(--dark-blue);
+    text-decoration:none;
+}
+
+
+/* working for footer  */
+
+.footer{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    padding:10px 0;
+    /* border:1px solid blue; */
+    /* display: flex;
+    justify-content:space-around; */
+    z-index:999;
+}
+
+
+.footer .logo {
+  display:flex;
+  align-items:center;
+  /* border:1px solid red; */
+}
+
+.footer p {
+    font-size:20px;
+    color:#728391;
+    margin:0;
+    margin-right:12px;
+    padding:0;
+
+}
+
+.footer .logo img{
+    
+    width:100px;
+}
+
+
+.footer .f-links a{
+    text-decoration:none;
+    font-size:20px;
+    color:var(--dark-blue);
+    margin-left:20px;
+}
+
+.footer .f-links a span{
+    color:#A2A2A2;
+    font-weight:bold;
+}
+
+
+@media screen and (max-width:420px){
+
+    .form_heading{
+        width:100% !important;
+    }
+
+    form{
+        width:100%;
+        padding:0 20px !important;
+    }
+
+
+}

@@ -1,0 +1,77 @@
+.delete-btn{
+  border: 1px solid red !important;
+  color: red !important;
+  background-color: #ffffff !important;
+  height: 35px !important;
+  width: 76px !important;
+  padding: 0px !important;
+} 
+.edit-btn{
+  border: 1px solid green !important;
+  color: green !important;
+  background-color: #ffffff !important;
+  height: 35px !important;
+  width: 76px !important;
+  padding: 0px !important;
+}
+.add-btn{
+  background-color: green !important;
+  height: 40px !important;
+  width: 200px !important;
+  padding: 0px !important;  
+}
+.add-department{
+  padding: 10px;
+  border-radius: 6px;
+  width: 339px;
+  height: 41px;
+  margin-top: 9px;
+}
+/* .apps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+  margin-top: 60px;
+  margin-left: 250px;
+} */
+
+.apps-container table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.apps-container th, td {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+  /* font-size: 32px; */
+}
+
+.table-heading{
+  background-color: rgb(245 222 130 / 62%);
+}
+.table-data{
+  background-color: white;
+}
+/* .apps-container th {
+  background-color: rgb(117, 201, 250);
+}
+
+.apps-container td {
+  background-color: rgb(205, 235, 253);
+}
+
+.apps-container form {
+  display: flex;
+  gap: 5px;
+}
+
+.apps-container form td:last-child {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.apps-container form * {
+  font-size: 15px;
+} */

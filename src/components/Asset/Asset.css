@@ -1,0 +1,48 @@
+main{
+  height:100%;
+  overflow:auto;
+  width: 100% !important;
+}
+.section{
+  width:100%;
+  padding:0;
+
+}
+
+main .section .form-data{
+  margin:0;
+  display: block !important;
+  padding: 0;
+  max-width:100% !important;
+  width:100% !important;
+}
+
+
+
+main .section .form-data .app-container{
+  width:100%;
+}
+
+
+.print-btn {
+  background-color: #ffffff !important;
+  height: 35px !important;
+  width: 76px !important;
+  padding: 0px !important;
+}
+.display-section .d-flex input {
+  width: 68% !important;
+}
+.slt {
+  width: 287px;
+  height: 40px;
+}
+.card-img-overlay {
+  background-color: rgba(#000, 0.4);
+}
+.row-data {
+  font-weight: bold;
+}
+.ye-dekho {
+  width: 65% !important ;
+}
