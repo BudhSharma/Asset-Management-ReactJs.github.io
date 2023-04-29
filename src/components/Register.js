@@ -112,7 +112,7 @@ const Register = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8010/department")
+    fetch("https://asset-3xk6.onrender.com/department")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);

@@ -10,6 +10,16 @@ import Header from "../Header";
 function AddAsset() {
   const [depart, setDepart] = useState([]);
   const [emp, setEmp] = useState([]);
+  const [org, setOrg] = useState([]);
+
+  const getOrgnaization = () => {
+    axios
+      .get("https://asset-3xk6.onrender.com/company")
+      .then((response) => {
+        setOrg(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const getEmp = () => {
     axios
@@ -37,6 +47,7 @@ function AddAsset() {
   useEffect(() => {
     getDepartment();
     getEmp();
+    getOrgnaization();
   }, []);
   const [inpval, setInpval] = useState({
     checkOut: "",
@@ -65,7 +76,6 @@ function AddAsset() {
     os_version: "",
     hard_disk: "",
     hard_disk_type: "",
-    owner: "",
     mouse: "",
     mouse_brand: "",
     keyboard: "",
@@ -124,7 +134,6 @@ function AddAsset() {
       os_version,
       hard_disk,
       hard_disk_type,
-      owner,
       mouse,
       mouse_brand,
       keyboard,
@@ -157,14 +166,6 @@ function AddAsset() {
       });
     } else if (cost === "") {
       toast.warning("cost is required!", {
-        position: "top-center",
-      });
-    } else if (department === "") {
-      toast.warning("department is required", {
-        position: "top-center",
-      });
-    } else if (employee_name === "") {
-      toast.warning("employee_name is required", {
         position: "top-center",
       });
     } else if (asset_type === "") {
@@ -221,7 +222,6 @@ function AddAsset() {
             _os_version = setNewVal(os_version),
             _hard_disk = setNewVal(hard_disk),
             _hard_disk_type = setNewVal(hard_disk_type),
-            _owner = setNewVal(owner),
             _mouse = setNewVal(mouse),
             _mouse_brand = setNewVal(mouse_brand),
             _keyboard = setNewVal(keyboard),
@@ -243,7 +243,6 @@ function AddAsset() {
             os_version: _os_version,
             hard_disk: _hard_disk,
             hard_disk_type: _hard_disk_type,
-            owner: _owner,
             mouse: _mouse,
             mouse_brand: _mouse_brand,
             keyboard: _keyboard,
@@ -347,7 +346,6 @@ function AddAsset() {
               os_version: "",
               hard_disk: "",
               hard_disk_type: "",
-              owner: "",
               mouse: "",
               mouse_brand: "",
               keyboard: "",
@@ -372,7 +370,6 @@ function AddAsset() {
           _os_version = setNewVal(os_version),
           _hard_disk = setNewVal(hard_disk),
           _hard_disk_type = setNewVal(hard_disk_type),
-          _owner = setNewVal(owner),
           _mouse = setNewVal(mouse),
           _mouse_brand = setNewVal(mouse_brand),
           _keyboard = setNewVal(keyboard),
@@ -394,7 +391,6 @@ function AddAsset() {
           os_version: _os_version,
           hard_disk: _hard_disk,
           hard_disk_type: _hard_disk_type,
-          owner: _owner,
           mouse: _mouse,
           mouse_brand: _mouse_brand,
           keyboard: _keyboard,
@@ -498,7 +494,6 @@ function AddAsset() {
             os_version: "",
             hard_disk: "",
             hard_disk_type: "",
-            owner: "",
             mouse: "",
             mouse_brand: "",
             keyboard: "",
@@ -611,15 +606,28 @@ function AddAsset() {
                     </div>
 
                     <div className="form_input d-flex align-items-center">
-                      <label htmlFor="checkIn">
-                        Check-In Date <sup style={{ color: "red" }}>*</sup>
-                      </label>
+                      <label htmlFor="checkIn">Check-In Date</label>
                       <input
                         type="date"
                         value={inpval.checkIn}
                         onChange={setVal}
                         name="checkIn"
                         id="checkIn"
+                        // placeholder="Enter password"
+                      />
+                    </div>
+
+                    <div className="form_input d-flex align-items-center">
+                      <label htmlFor="location">
+                        Location <sup style={{ color: "red" }}>*</sup>
+                      </label>
+                      <input
+                        required="required"
+                        type="text"
+                        value={inpval.location}
+                        onChange={setVal}
+                        name="location"
+                        id="location"
                         // placeholder="Enter password"
                       />
                     </div>
@@ -651,16 +659,17 @@ function AddAsset() {
                       />
                     </div>
                     <div className="form_input d-flex align-items-center">
-                      <label htmlFor="employee_code">
-                        Department <sup style={{ color: "red" }}>*</sup>
-                      </label>
+                      <label htmlFor="employee_code">Department</label>
                       <select
                         required="required"
                         className="select form-select"
                         value={inpval.department}
                         onChange={setVal}
                         name="department"
-                        style={{ width: "286px" }}
+                        style={{
+                          width: "387px",
+                          padding: "10px",
+                        }}
                       >
                         <option value="">Select Department</option>
                         {depart.map((item) => (
@@ -672,16 +681,18 @@ function AddAsset() {
                     </div>
 
                     <div className="form_input d-flex align-items-center">
-                      <label htmlFor="employee_code">
-                        Employee Name <sup style={{ color: "red" }}>*</sup>
-                      </label>
+                      <label htmlFor="employee_code">Employee Name</label>
                       <select
                         required="required"
                         className="select form-select"
                         value={inpval.employee_name}
                         onChange={setVal}
                         name="employee_name"
-                        style={{ width: "286px" }}
+                        style={{
+                          width: "387px",
+                          padding: "10px",
+                          marginTop: "13px",
+                        }}
                       >
                         <option value="">Select employee name</option>
                         {emp.map((item) => (
@@ -693,6 +704,33 @@ function AddAsset() {
                     </div>
 
                     <div className="form_input d-flex align-items-center">
+                      <label htmlFor="employee_code">
+                        Organization <sup style={{ color: "red" }}>*</sup>
+                      </label>
+                      <select
+                        required="required"
+                        className="select form-select"
+                        value={inpval.organization}
+                        onChange={setVal}
+                        name="organization"
+                        style={{
+                          width: "387px",
+                          padding: "10px",
+                          marginTop: "13px",
+                        }}
+                      >
+                        <option value="">Select organization name</option>
+                        {org.map((item) => {
+                          return (
+                            <option key={item._id} value={item.company}>
+                              {item.company}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+
+                    {/* <div className="form_input d-flex align-items-center">
                       <label htmlFor="organization">
                         Organization <sup style={{ color: "red" }}>*</sup>
                       </label>
@@ -704,7 +742,7 @@ function AddAsset() {
                         id="organization"
                         // placeholder="Enter password"
                       />
-                    </div>
+                    </div> */}
 
                     <div className="form_input d-flex align-items-center">
                       <label htmlFor="checkOut">
@@ -729,6 +767,7 @@ function AddAsset() {
                         value={inpval.asset_type}
                         name="asset_type"
                         onChange={setVal}
+                        style={{ width: "387px", height: "40px" }}
                       >
                         <option value="">Select category</option>
                         {names.map((item) => (
@@ -747,7 +786,7 @@ function AddAsset() {
                 <div
                   className="row"
                   style={{
-                    // marginLeft: "-140px",
+                    marginTop: "30px",
                     borderTop: "1px solid #80808069",
                   }}
                 >

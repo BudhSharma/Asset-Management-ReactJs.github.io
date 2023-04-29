@@ -7,7 +7,7 @@ import Header from "../Header";
 function AddLaptop(props) {
   return (
     <>
-      <div className="form_data" style={{height:"780px"}}>
+      <div className="form_data" style={{ height: "780px" }}>
         <form
           style={{
             marginLeft: "-10px",
@@ -72,6 +72,9 @@ function AddLaptop(props) {
                   value={props.inpval.ram_type}
                   name="ram_type"
                   onChange={props.setVal}
+                  style={{
+                    width: "387px",
+                  }}
                 >
                   <option value="">Select RAM Type</option>
                   <option value="SRAM">SRAM</option>
@@ -162,6 +165,9 @@ function AddLaptop(props) {
                   value={props.inpval.hard_disk_type}
                   name="hard_disk_type"
                   onChange={props.setVal}
+                  style={{
+                    width: "387px",
+                  }}
                 >
                   <option value="">Select Hard Disk Type</option>
                   <option value="SATA">SATA</option>
@@ -169,20 +175,6 @@ function AddLaptop(props) {
                   <option value="SCSI">SCSI</option>
                   <option value="SSD">SSD</option>
                 </select>
-              </div>
-              <div className="form_input d-flex align-items-center">
-                <label htmlFor="owner">
-                  Owner <sup style={{ color: "red" }}>*</sup>
-                </label>
-                <input
-                  required="required"
-                  type="text"
-                  value={props.inpval.owner}
-                  onChange={props.setVal}
-                  name="owner"
-                  id="owner"
-                  // placeholder="Enter password"
-                />
               </div>
             </div>
             <div

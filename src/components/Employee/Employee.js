@@ -166,23 +166,25 @@ function Employee() {
         {show ? (
           <>
             <form onSubmit={handleSubmit}>
-              <input
-                required="required"
-                className="add-department"
-                type="text"
-                value={name}
-                placeholder="Add new name..."
-                onChange={(e) => setName(e.target.value)}
-              />
-              <input
-                required="required"
-                className="add-department"
-                type="text"
-                value={email}
-                placeholder="Add new email..."
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {/* <input
+              <div className="row">
+                <div className="col-lg-6">
+                  <input
+                    required="required"
+                    className="add-department"
+                    type="text"
+                    value={name}
+                    placeholder="Add new name..."
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <input
+                    required="required"
+                    className="add-department"
+                    type="text"
+                    value={email}
+                    placeholder="Add new email..."
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {/* <input
           required="required"
           className="add-department"
           type="text"
@@ -190,30 +192,34 @@ function Employee() {
           placeholder="Add new company..."
           onChange={(e) => setSite(e.target.value)}
         /> */}
-              <select
-                required="required"
-                className="select form-select"
-                value={site}
-                name="jobTitle"
-                onChange={(e) => setSite(e.target.value)}
-                style={{ width: "337px" }}
-              >
-                <option value="">Select company</option>
-                {cmp.map((item) => (
-                  <option key={item._id} value={item.company}>
-                    {item.company}
-                  </option>
-                ))}
-              </select>
-              <input
-                required="required"
-                className="add-department"
-                type="text"
-                value={location}
-                placeholder="Add new location..."
-                onChange={(e) => setLocation(e.target.value)}
-              />
-              {/* <input
+                  <select
+                    required="required"
+                    className="select form-select"
+                    value={site}
+                    name="jobTitle"
+                    onChange={(e) => setSite(e.target.value)}
+                    style={{ width: "337px" }}
+                  >
+                    <option value="">Select company</option>
+                    {cmp.map((item) => (
+                      <option key={item._id} value={item.company}>
+                        {item.company}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="col-lg-6">
+                <input
+                  required="required"
+                  className="add-department"
+                  type="text"
+                  value={location}
+                  placeholder="Add new location..."
+                  onChange={(e) => setLocation(e.target.value)}
+                />
+                {/* <input
           required="required"
           className="add-department"
           type="text"
@@ -222,21 +228,22 @@ function Employee() {
           onChange={(e) => setDepartment(e.target.value)}
         /> */}
 
-              <select
-                required="required"
-                className="select form-select"
-                value={department}
-                name="jobTitle"
-                onChange={(e) => setDepartment(e.target.value)}
-                style={{ width: "337px" }}
-              >
-                <option value="">Select department</option>
-                {depart.map((item) => (
-                  <option key={item._id} value={item.department}>
-                    {item.department}
-                  </option>
-                ))}
-              </select>
+                <select
+                  required="required"
+                  className="select form-select"
+                  value={department}
+                  name="jobTitle"
+                  onChange={(e) => setDepartment(e.target.value)}
+                  style={{ width: "337px" }}
+                >
+                  <option value="">Select department</option>
+                  {depart.map((item) => (
+                    <option key={item._id} value={item.department}>
+                      {item.department}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               <button type="submit" class="add-btn btn btn-success">
                 {editMode ? (

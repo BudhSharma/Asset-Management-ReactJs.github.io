@@ -17,7 +17,6 @@ const Company = () => {
     postal_code: "",
     timezone: "",
     curruncy_symbol: "",
-    date: "",
     financial_year: "",
   });
 
@@ -50,7 +49,6 @@ const Company = () => {
       postal_code,
       timezone,
       curruncy_symbol,
-      date,
       financial_year,
     } = inpval;
 
@@ -86,10 +84,6 @@ const Company = () => {
       toast.error("Curruncy Symbol is required!", {
         position: "top-center",
       });
-    } else if (date === "") {
-      toast.error("Date is required!", {
-        position: "top-center",
-      });
     } else if (financial_year === "") {
       toast.error("Financial Year is required!", {
         position: "top-center",
@@ -106,7 +100,6 @@ const Company = () => {
       formData.append("postal_code", postal_code);
       formData.append("timezone", timezone);
       formData.append("curruncy_symbol", curruncy_symbol);
-      formData.append("date", date);
       formData.append("financial_year", financial_year);
       formData.append("file", file);
 
@@ -132,7 +125,6 @@ const Company = () => {
               postal_code: "",
               timezone: "",
               curruncy_symbol: "",
-              date: "",
               financial_year: "",
             });
             setFile("");
@@ -643,21 +635,6 @@ const Company = () => {
                   <option value="YER">Yemeni Rial</option>
                   <option value="ZMK">Zambian Kwacha</option>
                 </select>
-              </div>
-
-              <div className="form_input d-flex align-items-center">
-                <label htmlFor="date">
-                  Date <sup style={{ color: "red" }}>*</sup>
-                </label>
-                <input
-                  className="inp"
-                  type="date"
-                  value={inpval.date}
-                  onChange={setVal}
-                  name="date"
-                  id="date"
-                  placeholder="Enter date..."
-                />
               </div>
 
               <div className="form_input d-flex align-items-center">

@@ -5,6 +5,7 @@ import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import { LoginContext } from "../ContextProvider/Context";
 import SideBar from "../../Sidebar/SideBar";
 import Header from "../Header";
+import { useRef } from "react";
 
 function ViewAsset() {
   const { id, no } = useParams();
@@ -72,23 +73,41 @@ function ViewAsset() {
     // }, 2000);
   }, []);
 
+  const printRef = useRef(null);
+
   const handlePrint = () => {
-    window.print();
+    const content = printRef.current;
+    const pri = document.createElement("div");
+    pri.appendChild(content.cloneNode(true));
+    const printWindow = window.open("", "printWindow", "height=400,width=800");
+    printWindow.document.write(
+      "<html><head><title>Selected Element Print</title>"
+    );
+    printWindow.document.write("</head><body>");
+    printWindow.document.write(pri.innerHTML);
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.print();
   };
+
   return (
     <SideBar>
       <Header />
-      <div>
+      <div
+        id="print-content"
+        ref={printRef}
+        style={{ margin: "40px", marginRight: "170px", marginLeft: "110px" }}
+      >
         <div
           style={{
-            marginTop: "80px",
+            marginTop: "115px",
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <h3>Website development</h3>
             <div style={{ display: "flex" }}>
               <button
-                class="print-btn btn btn-outline-warning"
+                className="print-btn btn btn-outline-warning"
                 onClick={handlePrint}
                 style={{ marginRight: "120px" }}
               >
@@ -97,13 +116,13 @@ function ViewAsset() {
               </button>
               {no == 0 ? (
                 <Link to={`/edit-asset/${id}`} style={{ marginRight: "120px" }}>
-                  <button class="edit-btn btn btn-outline-success">
+                  <button className="edit-btn btn btn-outline-success">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
                       fill="currentColor"
-                      class="bi bi-pencil-fill"
+                      className="bi bi-pencil-fill"
                       viewBox="0 0 16 16"
                     >
                       <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
@@ -116,20 +135,20 @@ function ViewAsset() {
               )}
             </div>
           </div>
-          <div class="">
-            <div class="row" style={{ width: "118%" }}>
+          <div className="">
+            <div className="row" style={{ width: "118%" }}>
               <div
-                class="col-12 col-sm-8 col-md-6 col-lg-4"
+                className="col-12 col-sm-8 col-md-6 col-lg-4"
                 style={{ width: "300px" }}
               >
-                <div class="card" style={{ width: "250px" }}>
+                <div className="card" style={{ width: "250px" }}>
                   <img
                     style={{
                       height: "250px",
                       width: "250px",
                       border: "1px solid #80808099",
                     }}
-                    class="card-img"
+                    className="card-img"
                     src={
                       no == 0
                         ? `https://asset-3xk6.onrender.com/asset-brand/${id}`
@@ -139,9 +158,9 @@ function ViewAsset() {
                   />
                 </div>
               </div>
-              <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="card">
-                  <div class="text-black d-flex flex-column justify-content-center">
+              <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                <div className="card">
+                  <div className="text-black d-flex flex-column justify-content-center">
                     <table>
                       <tr>
                         <td>Asset Tag ID</td>
@@ -163,9 +182,9 @@ function ViewAsset() {
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="card">
-                  <div class="text-black d-flex flex-column justify-content-center">
+              <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                <div className="card">
+                  <div className="text-black d-flex flex-column justify-content-center">
                     <table>
                       <tr>
                         <td>Organization</td>
@@ -212,19 +231,22 @@ function ViewAsset() {
 
         {names.asset_type === "laptop" ? (
           <>
-            <div style={{ marginTop: "35px", marginLeft: "325px" }}>
+            <div style={{ marginTop: "35px", marginLeft: "7px" }}>
               <h3>Asset Details</h3>
-              <div class="container">
-                <div class="row">
+              <div className="container">
+                <div
+                  className="row"
+                  style={{ width: "1168px", marginLeft: "-24px" }}
+                >
                   <he
-                    class="col-12 col-sm-8 col-md-6 col-lg-4"
+                    className="col-12 col-sm-8 col-md-6 col-lg-4"
                     style={{ width: "300px" }}
                   >
                     Miscellaneous
                   </he>
-                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                      <div class="text-black d-flex flex-column justify-content-center">
+                  <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="card">
+                      <div className="text-black d-flex flex-column justify-content-center">
                         <table>
                           <tr>
                             <td>Serial No.</td>
@@ -234,9 +256,9 @@ function ViewAsset() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                      <div class="text-black d-flex flex-column justify-content-center">
+                  <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="card">
+                      <div className="text-black d-flex flex-column justify-content-center">
                         <table>
                           <tr>
                             <td>Purchased From</td>
@@ -253,17 +275,20 @@ function ViewAsset() {
             {/* Custom Fields */}
 
             <div style={{ marginTop: "55px", marginLeft: "325px" }}>
-              <div class="container">
-                <div class="row">
-                  <he
-                    class="col-12 col-sm-8 col-md-6 col-lg-4"
+              <div className="container">
+                <div
+                  className="row"
+                  style={{ width: "178%", marginLeft: "-52%" }}
+                >
+                  <h3
+                    className="col-12 col-sm-8 col-md-6 col-lg-4"
                     style={{ width: "300px" }}
                   >
                     Custom Fields
-                  </he>
-                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                      <div class="text-black d-flex flex-column justify-content-center">
+                  </h3>
+                  <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="card">
+                      <div className="text-black d-flex flex-column justify-content-center">
                         <table>
                           <tr>
                             <td>Ram</td>
@@ -305,9 +330,9 @@ function ViewAsset() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                      <div class="text-black d-flex flex-column justify-content-center">
+                  <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="card">
+                      <div className="text-black d-flex flex-column justify-content-center">
                         <table>
                           <tr>
                             <td>Ram Type</td>
@@ -351,17 +376,17 @@ function ViewAsset() {
             {/* Check Out */}
 
             <div style={{ marginTop: "82px", marginLeft: "325px" }}>
-              <div class="container">
-                <div class="row">
-                  <he
-                    class="col-12 col-sm-8 col-md-6 col-lg-4"
+              <div className="container">
+                <div className="row" style={{ width: "178%", marginLeft: "-52%" }}>
+                  <h3
+                    className="col-12 col-sm-8 col-md-6 col-lg-4"
                     style={{ width: "300px" }}
                   >
                     Check Out
-                  </he>
-                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                      <div class="text-black d-flex flex-column justify-content-center">
+                  </h3>
+                  <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="card">
+                      <div className="text-black d-flex flex-column justify-content-center">
                         <table>
                           <tr>
                             <td>Assigned to</td>
@@ -377,9 +402,9 @@ function ViewAsset() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                      <div class="text-black d-flex flex-column justify-content-center">
+                  <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="card">
+                      <div className="text-black d-flex flex-column justify-content-center">
                         <table>
                           <tr>
                             <td>Check-out Date</td>
@@ -399,17 +424,17 @@ function ViewAsset() {
             {/* Creation */}
 
             <div style={{ marginTop: "82px", marginLeft: "325px" }}>
-              <div class="container">
-                <div class="row">
-                  <he
-                    class="col-12 col-sm-8 col-md-6 col-lg-4"
+              <div className="container">
+                <div className="row" style={{ width: "178%", marginLeft: "-52%" }}>
+                  <h3
+                    className="col-12 col-sm-8 col-md-6 col-lg-4"
                     style={{ width: "300px" }}
                   >
                     Creation
-                  </he>
-                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                      <div class="text-black d-flex flex-column justify-content-center">
+                  </h3>
+                  <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="card">
+                      <div className="text-black d-flex flex-column justify-content-center">
                         <table>
                           <tr>
                             <td>Date Created</td>
@@ -419,9 +444,9 @@ function ViewAsset() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                      <div class="text-black d-flex flex-column justify-content-center">
+                  <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="card">
+                      <div className="text-black d-flex flex-column justify-content-center">
                         <table>
                           <tr>
                             <td>Created by</td>
