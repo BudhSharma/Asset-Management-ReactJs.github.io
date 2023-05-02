@@ -784,14 +784,24 @@ function AddAsset() {
                   </div>
                 </div>
                 {isFormVisible === "" && ""}
-                {isFormVisible === "laptop" ||
-                  isFormVisible === "Laptop" ||
-                  isFormVisible === "Computer" ||
-                  isFormVisible === "computer" ||
-                  isFormVisible === "tablet" ||
-                  (isFormVisible === "Tablet" && (
-                    <AddLaptop inpval={inpval} setVal={setVal} />
-                  ))}
+                {isFormVisible === "Laptop" && (
+                  <AddLaptop inpval={inpval} setVal={setVal} />
+                )}
+                {isFormVisible === "laptop" && (
+                  <AddLaptop inpval={inpval} setVal={setVal} />
+                )}
+                {isFormVisible === "computer" && (
+                  <AddLaptop inpval={inpval} setVal={setVal} />
+                )}
+                {isFormVisible === "Computer" && (
+                  <AddLaptop inpval={inpval} setVal={setVal} />
+                )}
+                {isFormVisible === "Tablet" && (
+                  <AddLaptop inpval={inpval} setVal={setVal} />
+                )}
+                {isFormVisible === "tablet" && (
+                  <AddLaptop inpval={inpval} setVal={setVal} />
+                )}
                 <div
                   className="row"
                   style={{
