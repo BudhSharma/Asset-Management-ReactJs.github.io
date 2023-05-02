@@ -17,6 +17,8 @@ import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AutoDeleteIcon from "@mui/icons-material/AutoDelete";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import ContactsIcon from "@mui/icons-material/Contacts";
 
 const routes = [
   {
@@ -28,6 +30,18 @@ const routes = [
     path: "/register",
     name: "Users",
     icon: <FaUser />,
+    subRoutes: [
+      {
+        path: "/register",
+        name: "Add User",
+        icon: <PersonAddIcon />,
+      },
+      {
+        path: "/user-list",
+        name: "User List",
+        icon: <ContactsIcon />,
+      },
+    ],
   },
   {
     path: "/employee",
@@ -112,7 +126,10 @@ const SideBar = ({ children }) => {
 
   return (
     <>
-      <div className="main-container" style={{height:"100vh", overflow:"hidden"}}>
+      <div
+        className="main-container"
+        style={{ height: "100vh", overflow: "hidden" }}
+      >
         <motion.div
           animate={{
             width: isOpen ? "280px" : "75px",
@@ -123,7 +140,7 @@ const SideBar = ({ children }) => {
             },
           }}
           className={`sidebar `}
-          style={{overflow:"hidden"}}
+          style={{ overflow: "hidden" }}
         >
           <div className="top_section">
             <AnimatePresence>
@@ -140,7 +157,7 @@ const SideBar = ({ children }) => {
               )}
             </AnimatePresence>
 
-            <div className="bars" style={{cursor: "pointer"}}>
+            <div className="bars" style={{ cursor: "pointer" }}>
               <FaBars onClick={toggle} />
             </div>
           </div>

@@ -21,6 +21,7 @@ import React from "react";
 import { useEffect, useContext, useState } from "react";
 import { LoginContext } from "./components/ContextProvider/Context";
 import Header from "./components/Header";
+import UserList from "./components/UserList";
 
 function App() {
   const [data, setData] = useState(false);
@@ -72,6 +73,7 @@ function App() {
             <Route path="/edit-asset/:id" element={<EditAsset />} />
             <Route path="/disposed-asset" element={<DisposedAsset />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/user-list" element={<UserList />} />
             <Route path="/password-reset" element={<PasswordReset />} />
             <Route
               path="/forgotpassword/:id/:token"

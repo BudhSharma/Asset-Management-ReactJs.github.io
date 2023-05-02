@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import SideBar from "../../Sidebar/SideBar";
 import Header from "../Header";
+import Modal from "../Modal";
 
 function Employee() {
   const [names, setNames] = useState([]);
@@ -134,7 +135,7 @@ function Employee() {
         console.log(error);
       });
   };
-
+  const [modalOpen, setModalOpen] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!editMode) {
@@ -374,7 +375,10 @@ function Employee() {
               <td style={{ width: "5%" }}>
                 <button
                   class="delete-btn btn btn-outline-danger"
-                  onClick={() => deleteName(special._id)}
+                  // onClick={() => deleteName(special._id)}
+                  onClick={() => {
+                    setModalOpen(true);
+                  }}
                 >
                   {" "}
                   <svg
@@ -391,6 +395,15 @@ function Employee() {
                   Delete
                 </button>
               </td>
+              {modalOpen && (
+                <Modal
+                  setOpenModal={setModalOpen}
+                  id={special._id}
+                  setNames={setNames}
+                  names={names}
+                  no={1}
+                />
+              )}
             </tr>
           ))}
           {/* </tr> */}

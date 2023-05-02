@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import SideBar from "../../Sidebar/SideBar";
 import Header from "../Header";
+import Modal from "../Modal";
 
 function Category() {
   const [show, setShow] = useState(false);
@@ -89,7 +90,7 @@ function Category() {
         console.log(error);
       });
   };
-
+  const [modalOpen, setModalOpen] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!editMode) {
@@ -234,7 +235,10 @@ function Category() {
               <td>
                 <button
                   class="delete-btn btn btn-outline-danger"
-                  onClick={() => deleteName(name._id)}
+                  // onClick={() => deleteName(name._id)}
+                  onClick={() => {
+                    setModalOpen(true);
+                  }}
                 >
                   {" "}
                   <svg
@@ -251,6 +255,15 @@ function Category() {
                   Delete
                 </button>
               </td>
+              {modalOpen && (
+                <Modal
+                  setOpenModal={setModalOpen}
+                  id={name._id}
+                  setNames={setNames}
+                  names={names}
+                  no={2}
+                />
+              )}
             </tr>
           ))}
           {/* </tr> */}

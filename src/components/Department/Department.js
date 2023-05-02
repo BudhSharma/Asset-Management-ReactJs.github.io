@@ -4,6 +4,7 @@ import "./dpt.css";
 import { ToastContainer, toast } from "react-toastify";
 import SideBar from "../../Sidebar/SideBar";
 import Header from "../Header";
+import Modal from "../Modal";
 
 function Department() {
   const [show, setShow] = useState(false);
@@ -80,7 +81,7 @@ function Department() {
         console.log(error);
       });
   };
-
+  const [modalOpen, setModalOpen] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!editMode) {
@@ -228,7 +229,10 @@ function Department() {
               <td>
                 <button
                   class="delete-btn btn btn-outline-danger"
-                  onClick={() => deleteName(name._id)}
+                  // onClick={() => deleteName(name._id)}
+                  onClick={() => {
+                    setModalOpen(true);
+                  }}
                 >
                   {" "}
                   <svg
@@ -245,6 +249,15 @@ function Department() {
                   Delete
                 </button>
               </td>
+              {modalOpen && (
+                <Modal
+                  setOpenModal={setModalOpen}
+                  id={name._id}
+                  setNames={setNames}
+                  names={names}
+                  no={3}
+                />
+              )}
             </tr>
           ))}
           {/* </tr> */}
