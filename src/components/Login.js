@@ -116,30 +116,32 @@ const Login = () => {
             <div className="form_group">
               {/* <label htmlFor="email">Email</label>
                             <input type="email" value={inpval.email} onChange={setVal} name="email" id="email" placeholder='Enter Your Email Address' /> */}
-
+              <label htmlFor="email">Email Address</label>
               <TextField
                 id="email"
                 type="email"
-                label="Email Address"
+                // label="Email Address"
                 variant="outlined"
                 value={inpval.email}
                 onChange={setVal}
                 name="email"
+                autoComplete="off"
               />
             </div>
             <div className="form_group mt-3 password-box">
               {/* <label htmlFor="password">Password</label> */}
 
               {/* <input type={!passShow ? "password" : "text"} onChange={setVal} value={inpval.password} name="password" id="password" placeholder='Enter Your password' /> */}
-
+              <label htmlFor="password">Password</label>
               <TextField
                 id="password"
                 type={!passShow ? "password" : "text"}
-                label="Password"
+                // label="Password"
                 variant="outlined"
                 value={inpval.password}
                 onChange={setVal}
                 name="password"
+                autoComplete="off"
               />
 
               <div className="showpass" onClick={() => setPassShow(!passShow)}>

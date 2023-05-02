@@ -149,7 +149,11 @@ const Company = () => {
       <>
         <section
           className="sc"
-          style={{ height: "100%", overflowY: "auto", margin: "80px" }}
+          style={{
+            height: "100%",
+            width: "-webkit-fill-available",
+            margin: "80px",
+          }}
         >
           <div className="form_data" style={{ margin: "auto" }}>
             <div className="form_heading">

@@ -229,7 +229,10 @@ function AddAsset() {
             _keyboard = setNewVal(keyboard),
             _charger = setNewVal(charger),
             _checkOut = setNewVal(checkOut),
-            _checkIn = setNewVal(checkIn);
+            _checkIn = setNewVal(checkIn),
+            _employee_name = setNewVal(employee_name),
+            _department = setNewVal(department),
+            _purchased_from = setNewVal(purchased_from);
 
           const fd = {
             checkIn: _checkIn,
@@ -251,7 +254,7 @@ function AddAsset() {
             charger: _charger,
 
             assetId: assetId,
-            purchased_from: purchased_from,
+            purchased_from: _purchased_from,
             purchased_date: purchased_date,
             description: description,
             serial_no: serial_no,
@@ -259,8 +262,8 @@ function AddAsset() {
             organization: organization,
             cost: cost,
             asset_type: asset_type,
-            department: department,
-            employee_name: employee_name,
+            department: _department,
+            employee_name: _employee_name,
             file: file,
             disposed: disposed,
           };
@@ -322,6 +325,7 @@ function AddAsset() {
             toast.success("Registration Successfully done 😃!", {
               position: "top-center",
             });
+            setLoading(false);
             setInpval({
               ...inpval,
               checkOut: "",
@@ -355,7 +359,6 @@ function AddAsset() {
               charger: "",
             });
             setFile(null);
-            setLoading(false);
           }
         }
       } else {
@@ -379,7 +382,10 @@ function AddAsset() {
           _keyboard = setNewVal(keyboard),
           _charger = setNewVal(charger),
           _checkOut = setNewVal(checkOut),
-          _checkIn = setNewVal(checkIn);
+          _checkIn = setNewVal(checkIn),
+          _employee_name = setNewVal(employee_name),
+          _department = setNewVal(department),
+          _purchased_from = setNewVal(purchased_from);
 
         const fd = {
           checkIn: _checkIn,
@@ -401,7 +407,7 @@ function AddAsset() {
           charger: _charger,
 
           assetId: assetId,
-          purchased_from: purchased_from,
+          purchased_from: _purchased_from,
           purchased_date: purchased_date,
           description: description,
           serial_no: serial_no,
@@ -409,8 +415,8 @@ function AddAsset() {
           organization: organization,
           cost: cost,
           asset_type: asset_type,
-          department: department,
-          employee_name: employee_name,
+          department: _department,
+          employee_name: _employee_name,
           file: file,
           disposed: disposed,
         };
@@ -450,6 +456,7 @@ function AddAsset() {
         // formData.append("keyboard", keyboard);
         // formData.append("charger", charger);
         // formData.append("file", file);
+        setLoading(true);
         const data = await axios
           .post("https://asset-3xk6.onrender.com/asset", formData, {
             headers: {
@@ -471,6 +478,7 @@ function AddAsset() {
           toast.success("Registration Successfully done 😃!", {
             position: "top-center",
           });
+          setLoading(false);
           setInpval({
             ...inpval,
             checkOut: "",

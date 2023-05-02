@@ -132,13 +132,14 @@ function ListAsset() {
       <Header />
       <div
         className="apps-container"
-        style={{ margin:"20px", marginTop:"80px" }}
+        style={{ margin: "20px", marginTop: "80px" }}
       >
         <h2>List of Asset</h2>
         <table className="main-table">
           <tr className="table-heading">
             <th>Brand name</th>
             <th>Name of Asset</th>
+            <th>Assigned Asset</th>
             <th>Created by</th>
             <th>Date</th>
             <th>View Asset</th>
@@ -147,9 +148,16 @@ function ListAsset() {
           {names.map((name) => {
             return (
               <tr>
-                <td style={{ width: "20%" }}>{name.brand}</td>
+                <td style={{ width: "10%" }}>{name.brand}</td>
                 <td style={{ width: "15%" }}>{name.asset_type}</td>
-                {names.length > 0 && <td style={{ width: "20%" }}>{fn}</td>}
+                <td style={{ width: "15%" }}>
+                  {name.employee_name == -1 ? (
+                    <b style={{ color: "red" }}>not-assinged</b>
+                  ) : (
+                    <span style={{ color: "blue" }}>{name.employee_name}</span>
+                  )}
+                </td>
+                {names.length > 0 && <td style={{ width: "15%" }}>{fn}</td>}
                 <td style={{ width: "15%" }}>{name.createdAt.split("T")[0]}</td>
 
                 <td style={{ width: "15%" }}>
