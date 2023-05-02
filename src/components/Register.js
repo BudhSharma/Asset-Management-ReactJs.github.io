@@ -5,11 +5,12 @@ import "react-toastify/dist/ReactToastify.css";
 import "./mix.css";
 import SideBar from "../Sidebar/SideBar";
 import Header from "./Header";
+import { Box, CircularProgress } from "@mui/material";
 
 const Register = () => {
   const [passShow, setPassShow] = useState(false);
   const [cpassShow, setCPassShow] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const [inpval, setInpval] = useState({
     fname: "",
     jobTitle: "",
@@ -30,7 +31,7 @@ const Register = () => {
       };
     });
   };
-
+  
   const addUserdata = async (e) => {
     e.preventDefault();
 
@@ -70,7 +71,7 @@ const Register = () => {
       });
     } else {
       // console.log("user registration succesfully done");
-
+      setLoading(true);
       const data = await fetch("https://asset-3xk6.onrender.com/register", {
         method: "POST",
         headers: {
@@ -90,6 +91,7 @@ const Register = () => {
       // console.log(res.status);
 
       if (res.status === 201) {
+        setLoading(false);
         toast.success("Registration Successfully done 😃!", {
           position: "top-center",
         });
@@ -238,8 +240,21 @@ const Register = () => {
                 </div>
               </div>
 
-              <button className="btn" onClick={addUserdata}>
-                Create New User
+              <button className="btn" onClick={addUserdata} disabled={loading}>
+                {loading ? (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    Loading... &nbsp;
+                    <CircularProgress />
+                  </Box>
+                ) : (
+                  "Create New User"
+                )}
               </button>
               {/* <p>
               Already have an account? <NavLink to="/">Log In</NavLink>

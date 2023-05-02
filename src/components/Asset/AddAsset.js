@@ -6,11 +6,13 @@ import "./Asset.css";
 import AddLaptop from "./AddLaptop";
 import SideBar from "../../Sidebar/SideBar";
 import Header from "../Header";
+import { Box, CircularProgress } from "@mui/material";
 
 function AddAsset() {
   const [depart, setDepart] = useState([]);
   const [emp, setEmp] = useState([]);
   const [org, setOrg] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getOrgnaization = () => {
     axios
@@ -298,6 +300,7 @@ function AddAsset() {
           // formData.append("keyboard", keyboard);
           // formData.append("charger", charger);
           // formData.append("file", file);
+          setLoading(true);
           const data = await axios
             .post("https://asset-3xk6.onrender.com/asset", formData, {
               headers: {
@@ -352,6 +355,7 @@ function AddAsset() {
               charger: "",
             });
             setFile(null);
+            setLoading(false);
           }
         }
       } else {
@@ -780,9 +784,14 @@ function AddAsset() {
                   </div>
                 </div>
                 {isFormVisible === "" && ""}
-                {isFormVisible === "laptop" && (
-                  <AddLaptop inpval={inpval} setVal={setVal} />
-                )}
+                {isFormVisible === "laptop" ||
+                  isFormVisible === "Laptop" ||
+                  isFormVisible === "Computer" ||
+                  isFormVisible === "computer" ||
+                  isFormVisible === "tablet" ||
+                  (isFormVisible === "Tablet" && (
+                    <AddLaptop inpval={inpval} setVal={setVal} />
+                  ))}
                 <div
                   className="row"
                   style={{
@@ -811,8 +820,25 @@ function AddAsset() {
                     )}
                   </div>
                 </div>
-                <button className="btn" onClick={addUserdata}>
-                  Add an Asset
+                <button
+                  className="btn"
+                  onClick={addUserdata}
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      Loading... &nbsp;
+                      <CircularProgress />
+                    </Box>
+                  ) : (
+                    "Add an Asset"
+                  )}
                 </button>
               </form>
               <ToastContainer />

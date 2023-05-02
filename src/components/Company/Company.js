@@ -6,6 +6,7 @@ import axios from "axios";
 import "./company.css";
 import SideBar from "../../Sidebar/SideBar";
 import Header from "../Header";
+import { Box, CircularProgress } from "@mui/material";
 
 const Company = () => {
   const [inpval, setInpval] = useState({
@@ -19,6 +20,7 @@ const Company = () => {
     curruncy_symbol: "",
     financial_year: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const setVal = (e) => {
     // console.log(e.target.value);
@@ -102,7 +104,7 @@ const Company = () => {
       formData.append("curruncy_symbol", curruncy_symbol);
       formData.append("financial_year", financial_year);
       formData.append("file", file);
-
+      setLoading(true);
       const data = await axios
         .post("https://asset-3xk6.onrender.com/company", formData, {
           headers: {
@@ -128,6 +130,7 @@ const Company = () => {
               financial_year: "",
             });
             setFile("");
+            setLoading(false);
           }
         })
         .catch((error) => {
@@ -671,12 +674,22 @@ const Company = () => {
                 )}
               </div>
 
-              <button className="btn" onClick={addUserdata}>
-                Add your company details
+              <button className="btn" onClick={addUserdata} disabled={loading}>
+                {loading ? (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    Loading... &nbsp;
+                    <CircularProgress />
+                  </Box>
+                ) : (
+                  "Add your company details"
+                )}
               </button>
-              {/* <p>
-              Already have an account? <NavLink to="/">Log In</NavLink>
-            </p> */}
             </form>
             <ToastContainer />
           </div>

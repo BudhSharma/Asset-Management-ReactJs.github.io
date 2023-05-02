@@ -15,7 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function Modal({ setOpenModal, id, setNames, names, no }) {
   const [open, setOpen] = React.useState(false);
-  console.log(id);
+
   const handleClose = () => {
     setOpen(false);
   };

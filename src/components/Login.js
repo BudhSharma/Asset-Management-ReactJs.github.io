@@ -8,6 +8,8 @@ import eyeball_unhide from "../assets/images/ic_unhide_password.svg";
 import "./login.css";
 import TextField from "@mui/material/TextField";
 import Footer from "./footer";
+import LoopIcon from "@mui/icons-material/Loop";
+import { Box, CircularProgress } from "@mui/material";
 
 const Login = () => {
   const [passShow, setPassShow] = useState(false);
@@ -30,6 +32,8 @@ const Login = () => {
       };
     });
   };
+
+  const [loading, setLoading] = useState(false);
 
   const loginuser = async (e) => {
     e.preventDefault();
@@ -54,7 +58,7 @@ const Login = () => {
       });
     } else {
       // console.log("user login succesfully done");
-
+      setLoading(true);
       const data = await fetch("https://asset-3xk6.onrender.com/login", {
         method: "POST",
         headers: {
@@ -70,6 +74,7 @@ const Login = () => {
       //  console.log(res);
 
       if (res.status === 201) {
+        setLoading(false);
         localStorage.setItem("usersdatatoken", res.result.token);
         history("/dash");
         setInpval({ ...inpval, email: "", password: "" });
@@ -152,8 +157,21 @@ const Login = () => {
               </a>
             </div> */}
 
-            <button className="btn" onClick={loginuser}>
-              Sign In
+            <button className="btn" onClick={loginuser} disabled={loading}>
+              {loading ? (
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  Loading... &nbsp;
+                  <CircularProgress />
+                </Box>
+              ) : (
+                "Sign In"
+              )}
             </button>
           </form>
           <ToastContainer />
