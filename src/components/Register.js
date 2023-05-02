@@ -105,6 +105,7 @@ const Register = () => {
           cpassword: "",
         });
       } else {
+        setLoading(false);
         toast.warning("Email is already exists", {
           position: "top-center",
         });
