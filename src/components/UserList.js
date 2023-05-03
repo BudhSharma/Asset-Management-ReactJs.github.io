@@ -10,7 +10,7 @@ function UserList() {
 
   const getUSer = () => {
     axios
-      .get("http://localhost:8010/user-list")
+      .get("https://asset-3xk6.onrender.com/user-list")
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
   };
