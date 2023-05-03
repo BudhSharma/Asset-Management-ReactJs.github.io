@@ -555,7 +555,7 @@ function AddAsset() {
                         Asset Tag ID <sup style={{ color: "red" }}>*</sup>
                       </label>
                       <input
-                        type="number"
+                        type="text"
                         onChange={setVal}
                         value={inpval.assetId}
                         name="assetId"
@@ -791,25 +791,11 @@ function AddAsset() {
                     </div>
                   </div>
                 </div>
-                {isFormVisible === "" && ""}
-                {isFormVisible === "Laptop" && (
-                  <AddLaptop inpval={inpval} setVal={setVal} />
-                )}
-                {isFormVisible === "laptop" && (
-                  <AddLaptop inpval={inpval} setVal={setVal} />
-                )}
-                {isFormVisible === "computer" && (
-                  <AddLaptop inpval={inpval} setVal={setVal} />
-                )}
-                {isFormVisible === "Computer" && (
-                  <AddLaptop inpval={inpval} setVal={setVal} />
-                )}
-                {isFormVisible === "Tablet" && (
-                  <AddLaptop inpval={inpval} setVal={setVal} />
-                )}
-                {isFormVisible === "tablet" && (
-                  <AddLaptop inpval={inpval} setVal={setVal} />
-                )}
+                {/* {isFormVisible === "" && ""} */}
+                {isFormVisible &&
+                  ["laptop", "computer", "tablet"].includes(
+                    isFormVisible.toLowerCase()
+                  ) && <AddLaptop inpval={inpval} setVal={setVal} />}
                 <div
                   className="row"
                   style={{
