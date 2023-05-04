@@ -6,6 +6,9 @@ import AutoDeleteIcon from "@mui/icons-material/AutoDelete";
 import { Link, useNavigate } from "react-router-dom";
 import SideBar from "../../Sidebar/SideBar";
 import Header from "../Header";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 
 function ListAsset() {
   const [show, setShow] = useState(false);
@@ -16,6 +19,7 @@ function ListAsset() {
   const [editId, setEditId] = useState("");
   const [save, setSave] = useState();
   const navigate = useNavigate();
+  const [status, setStatus] = useState("-1");
 
   const clickShow = () => {
     setShow(true);
@@ -47,7 +51,16 @@ function ListAsset() {
         console.log(error);
       });
   };
-
+  const statusButtons = [
+    {
+      status: "1",
+      name: "Under Repair",
+    },
+    {
+      status: "2",
+      name: "Lost",
+    },
+  ];
   const updateName = () => {
     axios
       .patch(`https://asset-3xk6.onrender.com/asset/${editId}`, { category })
@@ -79,6 +92,14 @@ function ListAsset() {
       .catch((error) => {
         console.log(error);
       });
+  };
+  const changeAssetsStatus = (status, id) => {
+    axios
+      .patch(`http://localhost:8010/asset/${id}`, { status })
+      .then((res) => {
+        setStatus(statusButtons.filter((btn) => btn.status == status)[0].name);
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleSubmit = (e) => {
@@ -143,13 +164,14 @@ function ListAsset() {
             <th>Created by</th>
             <th>Date</th>
             <th>View Asset</th>
+            <th>Status</th>
             <th>Disposed</th>
           </tr>
           {names.map((name) => {
             return (
               <tr>
                 <td style={{ width: "10%" }}>{name.brand}</td>
-                <td style={{ width: "15%" }}>{name.asset_type}</td>
+                <td style={{ width: "10%" }}>{name.asset_type}</td>
                 <td style={{ width: "15%" }}>
                   {name.employee_name == -1 ? (
                     <b style={{ color: "red" }}>not-assinged</b>
@@ -158,9 +180,9 @@ function ListAsset() {
                   )}
                 </td>
                 {names.length > 0 && <td style={{ width: "15%" }}>{fn}</td>}
-                <td style={{ width: "15%" }}>{name.createdAt.split("T")[0]}</td>
+                <td style={{ width: "10%" }}>{name.createdAt.split("T")[0]}</td>
 
-                <td style={{ width: "15%" }}>
+                <td style={{ width: "12%" }}>
                   <Link to={`/view-asset/${name._id}/${0}`}>
                     <button className="btn btn-outline-success">
                       {" "}
@@ -168,6 +190,50 @@ function ListAsset() {
                       View Asset
                     </button>
                   </Link>
+                </td>
+                <td style={{ width: "13%" }}>
+                  <Popup
+                    trigger={
+                      <button className="btn btn-outline-warning" type="button">
+                        {status !== "-1" ? (
+                          <>
+                            <MilitaryTechIcon />
+                            {status}
+                          </>
+                        ) : (
+                          <>
+                            <MilitaryTechIcon />
+                            Status
+                          </>
+                        )}
+                      </button>
+                    }
+                    position="right center"
+                  >
+                    <div className="row">
+                      <div className="col-md-12">
+                        <div style={{ fontWeight: "bold", color: "red" }}>
+                          Change asset status
+                        </div>
+                      </div>
+                      {statusButtons.map((btn) => {
+                        return (
+                          <div className="col-md-12">
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              style={{ width: "80%" }}
+                              onClick={() =>
+                                changeAssetsStatus(btn.status, name._id)
+                              }
+                            >
+                              {btn.name}
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </Popup>
                 </td>
                 <td style={{ width: "15%" }}>
                   {/* <Link to={`http://localhost:8010/asset-data/${name._id}`}> */}

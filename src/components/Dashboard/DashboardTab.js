@@ -6,11 +6,20 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import CheckOut from "./CheckedOut";
 import CheckIn from "./CheckIn";
+import UnderRepair from "./UnderRepair";
+import Lost from "./Lost";
+import axios from "axios";
 
 export default function LabTabs() {
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
+    axios
+      .get("http://localhost:8010/asset")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
     setValue(newValue);
   };
 
@@ -31,8 +40,12 @@ export default function LabTabs() {
         <TabPanel value="2">
           <CheckIn />
         </TabPanel>
-        <TabPanel value="3">under repair</TabPanel>
-        <TabPanel value="4">lost</TabPanel>
+        <TabPanel value="3">
+          <UnderRepair />
+        </TabPanel>
+        <TabPanel value="4">
+          <Lost />
+        </TabPanel>
       </TabContext>
     </Box>
   );

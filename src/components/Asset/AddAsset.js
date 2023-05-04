@@ -52,6 +52,7 @@ function AddAsset() {
     getOrgnaization();
   }, []);
   const [inpval, setInpval] = useState({
+    status: "0",
     checkOut: "",
     checkIn: "",
     disposed: "0",
@@ -110,6 +111,7 @@ function AddAsset() {
     e.preventDefault();
 
     const {
+      status,
       checkOut,
       checkIn,
       disposed,
@@ -266,6 +268,7 @@ function AddAsset() {
             employee_name: _employee_name,
             file: file,
             disposed: disposed,
+            status: status,
           };
           const formData = new FormData();
           for (let i = 0; i < Object.keys(fd).length; i++) {
@@ -305,7 +308,7 @@ function AddAsset() {
           // formData.append("file", file);
           setLoading(true);
           const data = await axios
-            .post("https://asset-3xk6.onrender.com/asset", formData, {
+            .post("http://localhost:8010/asset", formData, {
               headers: {
                 //   "Content-Type": "application/json",
                 "Content-Type": "multipart/form-data",
@@ -419,6 +422,7 @@ function AddAsset() {
           employee_name: _employee_name,
           file: file,
           disposed: disposed,
+          status: status,
         };
         const formData = new FormData();
         for (let i = 0; i < Object.keys(fd).length; i++) {
@@ -458,7 +462,7 @@ function AddAsset() {
         // formData.append("file", file);
         setLoading(true);
         const data = await axios
-          .post("https://asset-3xk6.onrender.com/asset", formData, {
+          .post("http://localhost:8010/asset", formData, {
             headers: {
               //   "Content-Type": "application/json",
               "Content-Type": "multipart/form-data",
