@@ -95,7 +95,7 @@ function ListAsset() {
   };
   const changeAssetsStatus = (status, id) => {
     axios
-      .patch(`http://localhost:8010/asset/${id}`, { status })
+      .patch(`https://asset-3xk6.onrender.com/asset/${id}`, { status })
       .then((res) => {
         setStatus(statusButtons.filter((btn) => btn.status == status)[0].name);
       })

@@ -15,7 +15,7 @@ export default function LabTabs() {
 
   const handleChange = (event, newValue) => {
     axios
-      .get("http://localhost:8010/asset")
+      .get("https://asset-3xk6.onrender.com/asset")
       .then((res) => {
         console.log(res);
       })

@@ -7,7 +7,7 @@ import { useState } from "react";
 const columns = [
   { field: "id", headerName: "ASSET TAG ID", width: 200 },
   { field: "description", headerName: "DESCRIPTION", width: 200 },
-  { field: "checkIn", headerName: "CHECK-OUT DATE", width: 200 },
+  { field: "checkIn", headerName: "CHECK-IN DATE", width: 200 },
   { field: "employee_name", headerName: "ASSIGNED TO", width: 200 },
   //   {
   //     field: "fullName",

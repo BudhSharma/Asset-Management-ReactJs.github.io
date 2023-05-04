@@ -308,7 +308,7 @@ function AddAsset() {
           // formData.append("file", file);
           setLoading(true);
           const data = await axios
-            .post("http://localhost:8010/asset", formData, {
+            .post("https://asset-3xk6.onrender.com/asset", formData, {
               headers: {
                 //   "Content-Type": "application/json",
                 "Content-Type": "multipart/form-data",
@@ -462,7 +462,7 @@ function AddAsset() {
         // formData.append("file", file);
         setLoading(true);
         const data = await axios
-          .post("http://localhost:8010/asset", formData, {
+          .post("https://asset-3xk6.onrender.com/asset", formData, {
             headers: {
               //   "Content-Type": "application/json",
               "Content-Type": "multipart/form-data",
