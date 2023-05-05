@@ -132,114 +132,63 @@ function Category() {
                 placeholder="Add new Category..."
                 onChange={(e) => setCategory(e.target.value)}
               />
-              <button
-                type="submit"
-                class="add-btn btn btn-success"
-                disabled={loading}
-              >
-                {editMode ? (
-                  <>
-                    {loading ? (
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        Loading... &nbsp;
-                        <CircularProgress />
-                      </Box>
-                    ) : (
-                      <>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          class="bi bi-pencil-fill"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
-                        </svg>
-                        Update
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    {loading ? (
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        Loading... &nbsp;
-                        <CircularProgress />
-                      </Box>
-                    ) : (
-                      <>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="18x"
-                          fill="currentColor"
-                          class="bi bi-plus-lg"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                          />
-                        </svg>
-                        Click to add
-                      </>
-                    )}
-                  </>
-                )}
-              </button>
-              <button
-                type="submit"
-                class="add-btn btn btn-success"
-                onClick={() => setShow(false)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18x"
-                  fill="currentColor"
-                  class="bi bi-plus-lg"
-                  viewBox="0 0 16 16"
+              <div className="d-flex my-3">
+                <button
+                  type="submit"
+                  class="add-btn btn btn-success"
+                  disabled={loading}
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                  />
-                </svg>
-                Close
-              </button>
+                  {editMode ? (
+                    <>
+                      {loading ? (
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Loading... &nbsp;
+                          <CircularProgress />
+                        </Box>
+                      ) : (
+                        <>Update</>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {loading ? (
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Loading... &nbsp;
+                          <CircularProgress />
+                        </Box>
+                      ) : (
+                        <>Click to add</>
+                      )}
+                    </>
+                  )}
+                </button>
+                <button
+                  type="submit"
+                  class="add-btn btn btn-danger mx-3"
+                  onClick={() => setShow(false)}
+                >
+                  Close
+                </button>
+              </div>
             </>
           ) : (
             <button
               type="submit"
-              class="add-btn btn btn-success"
+              class="add-btn btn btn-success my-3"
               onClick={clickShow}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18x"
-                fill="currentColor"
-                class="bi bi-plus-lg"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                />
-              </svg>
               Click to add
             </button>
           )}
@@ -258,7 +207,7 @@ function Category() {
 
               <td>
                 <button
-                  class="edit-btn btn btn-outline-success"
+                  class="edit-btn btn btn-success"
                   onClick={() => handleEdit(name._id, name.category)}
                 >
                   <svg
@@ -266,7 +215,7 @@ function Category() {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-pencil-fill"
+                    class="bi bi-pencil-fill mx-2"
                     viewBox="0 0 16 16"
                   >
                     <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
@@ -277,7 +226,7 @@ function Category() {
 
               <td>
                 <button
-                  class="delete-btn btn btn-outline-danger"
+                  class="delete-btn btn btn-danger"
                   // onClick={() => deleteName(name._id)}
                   onClick={() => {
                     setModalOpen(true);
@@ -289,7 +238,7 @@ function Category() {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-trash"
+                    class="bi bi-trash mx-2"
                     viewBox="0 0 16 16"
                   >
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />

@@ -1,26 +1,34 @@
-.delete-btn{
-  border: 1px solid red !important;
+.delete-btn {
+  /* border: 1px solid red !important;
   color: red !important;
-  background-color: #ffffff !important;
-  height: 35px !important;
-  width: 76px !important;
-  padding: 0px !important;
-} 
-.edit-btn{
-  border: 1px solid green !important;
-  color: green !important;
-  background-color: #ffffff !important;
-  height: 35px !important;
-  width: 76px !important;
-  padding: 0px !important;
+  background-color: #ffffff !important; */
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  width: 95px !important;
+  text-align: center;
 }
-.add-btn{
-  background-color: green !important;
+.edit-btn {
+  /* border: 1px solid green !important; */
+  /* color: green !important; */
+  /* background-color: #ffffff !important; */
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  width: 76px !important;
+  text-align: center;
+  /* padding: 0px !important; */
+}
+.add-btn {
+  /* background-color: green !important; */
   height: 40px !important;
   width: 200px !important;
-  padding: 0px !important;  
+  padding: 0px !important;
 }
-.add-department{
+.emp-btn {
+  background-color: #dc3545 !important;
+}
+.add-department {
   padding: 10px;
   border-radius: 6px;
   width: 339px;
@@ -41,17 +49,18 @@
   width: 100%;
 }
 
-.apps-container th, td {
+.apps-container th,
+td {
   border: 1px solid black;
   text-align: left;
   padding: 8px;
   /* font-size: 32px; */
 }
 
-.table-heading{
+.table-heading {
   background-color: rgb(245 222 130 / 62%);
 }
-.table-data{
+.table-data {
   background-color: white;
 }
 /* .apps-container th {

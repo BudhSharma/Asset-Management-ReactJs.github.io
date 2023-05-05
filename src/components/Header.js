@@ -65,7 +65,7 @@ const Header = () => {
       >
         <nav>
           <NavLink to="/dash" style={{borderRight:"none", background:"none"}}>
-            <h4>Asset Management</h4>
+            <h4 style={{color:"white"}}>Asset Management</h4>
           </NavLink>
           <div className="avtar">
             {logindata.ValidUserOne ? (

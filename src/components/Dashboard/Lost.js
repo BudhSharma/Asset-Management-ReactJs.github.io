@@ -7,7 +7,7 @@ import { useState } from "react";
 const columns = [
   { field: "id", headerName: "ASSET TAG ID", width: 200 },
   { field: "description", headerName: "DESCRIPTION", width: 200 },
-  { field: "checkIn", headerName: "CHECK-OUT DATE", width: 200 },
+  { field: "checkIn", headerName: "CHECK-IN DATE", width: 200 },
   { field: "employee_name", headerName: "ASSIGNED TO", width: 200 },
   //   {
   //     field: "fullName",
@@ -32,18 +32,17 @@ export default function Lost() {
       .get("https://asset-3xk6.onrender.com/asset")
       .then((response) => {
         if (response.data.find((data) => data.status == "2")) {
-          const filter = response.data.map((n) => {
-            if (n.status == "2") {
-              return {
-                id: n.assetId,
-                description: n.description,
-                checkIn: n.checkIn == -1 ? "No Due Date" : n.checkIn,
-                employee_name:
-                  n.employee_name == -1 ? "Not assigned" : n.employee_name,
-              };
-            }
+          const filter = response.data.filter((n) => n.status == "2");
+          const set = filter.map((f) => {
+            return {
+              id: f.assetId,
+              description: f.description,
+              checkIn: f.checkIn == -1 ? "No Due Date" : f.checkIn,
+              employee_name:
+                f.employee_name == -1 ? "Not assigned" : f.employee_name,
+            };
           });
-          setRows(filter);
+          setRows(set);
         }
       })
       .catch((error) => {

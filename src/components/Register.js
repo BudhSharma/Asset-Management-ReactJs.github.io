@@ -241,7 +241,7 @@ const Register = () => {
                 </div>
               </div>
 
-              <button className="btn" onClick={addUserdata} disabled={loading}>
+              <button className="btn btn-success" onClick={addUserdata} disabled={loading}>
                 {loading ? (
                   <Box
                     sx={{

@@ -154,7 +154,7 @@ function ViewAsset() {
                         ? `https://asset-3xk6.onrender.com/asset-brand/${id}`
                         : `https://asset-3xk6.onrender.com/asset-brand-data/${id}`
                     }
-                    alt="Bologna"
+                    alt=""
                   />
                 </div>
               </div>

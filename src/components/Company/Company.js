@@ -16,8 +16,8 @@ const Company = () => {
     city: "",
     state: "",
     postal_code: "",
-    timezone: "",
-    curruncy_symbol: "",
+    timezone: "(GMT+05:30) New Delhi",
+    curruncy_symbol: "Indian Rupee",
     financial_year: "",
   });
   const [loading, setLoading] = useState(false);
@@ -78,14 +78,6 @@ const Company = () => {
       toast.error("Postal Code is required!", {
         position: "top-center",
       });
-    } else if (timezone === "") {
-      toast.error("Timezone is required!", {
-        position: "top-center",
-      });
-    } else if (curruncy_symbol === "") {
-      toast.error("Curruncy Symbol is required!", {
-        position: "top-center",
-      });
     } else if (financial_year === "") {
       toast.error("Financial Year is required!", {
         position: "top-center",
@@ -135,6 +127,7 @@ const Company = () => {
         })
         .catch((error) => {
           if (error.response.status === 409) {
+            setLoading(false);
             toast.warning("Company is already exists", {
               position: "top-center",
             });
@@ -179,20 +172,6 @@ const Company = () => {
                 />
               </div>
               <div className="form_input d-flex align-items-center">
-                <label htmlFor="country">
-                  Country <sup style={{ color: "red" }}>*</sup>
-                </label>
-                <input
-                  className="inp"
-                  type="text"
-                  onChange={setVal}
-                  value={inpval.country}
-                  name="country"
-                  id="country"
-                  placeholder="Enter country..."
-                />
-              </div>
-              <div className="form_input d-flex align-items-center">
                 <label htmlFor="address">
                   Address <sup style={{ color: "red" }}>*</sup>
                 </label>
@@ -204,6 +183,20 @@ const Company = () => {
                   name="address"
                   id="address"
                   placeholder="Enter address..."
+                />
+              </div>
+              <div className="form_input d-flex align-items-center">
+                <label htmlFor="postal_code">
+                  Postal Code <sup style={{ color: "red" }}>*</sup>
+                </label>
+                <input
+                  className="inp"
+                  type="number"
+                  value={inpval.postal_code}
+                  onChange={setVal}
+                  name="postal_code"
+                  id="postal_code"
+                  placeholder="Enter postal code..."
                 />
               </div>
               <div className="form_input d-flex align-items-center">
@@ -234,21 +227,21 @@ const Company = () => {
                   placeholder="Enter State..."
                 />
               </div>
-
               <div className="form_input d-flex align-items-center">
-                <label htmlFor="postal_code">
-                  Postal Code <sup style={{ color: "red" }}>*</sup>
+                <label htmlFor="country">
+                  Country <sup style={{ color: "red" }}>*</sup>
                 </label>
                 <input
                   className="inp"
-                  type="number"
-                  value={inpval.postal_code}
+                  type="text"
                   onChange={setVal}
-                  name="postal_code"
-                  id="postal_code"
-                  placeholder="Enter postal code..."
+                  value={inpval.country}
+                  name="country"
+                  id="country"
+                  placeholder="Enter country..."
                 />
               </div>
+
               <div className="form_heading">
                 <h3 className="head">Timezone & Currency</h3>
                 <p className="cont">
@@ -276,6 +269,10 @@ const Company = () => {
                   onChange={setVal}
                   name="timezone"
                 >
+                  {/* <option value="" disabled="disabled">
+                    -------------
+                  </option> */}
+                  <option value="New Delhi">(GMT+05:30) New Delhi</option>
                   <option value="Hawaii">(GMT-10:00) Hawaii</option>
                   <option value="Alaska">(GMT-09:00) Alaska</option>
                   <option value="Pacific Time (US &amp; Canada)">
@@ -296,9 +293,6 @@ const Company = () => {
                   </option>
                   <option value="Indiana (East)">
                     (GMT-05:00) Indiana (East)
-                  </option>
-                  <option value="" disabled="disabled">
-                    -------------
                   </option>
                   <option value="International Date Line West">
                     (GMT-11:00) International Date Line West
@@ -401,7 +395,6 @@ const Company = () => {
                   <option value="Chennai">(GMT+05:30) Chennai</option>
                   <option value="Kolkata">(GMT+05:30) Kolkata</option>
                   <option value="Mumbai">(GMT+05:30) Mumbai</option>
-                  <option value="New Delhi">(GMT+05:30) New Delhi</option>
                   <option value="Kathmandu">(GMT+05:45) Kathmandu</option>
                   <option value="Almaty">(GMT+06:00) Almaty</option>
                   <option value="Astana">(GMT+06:00) Astana</option>
@@ -474,7 +467,7 @@ const Company = () => {
                   onChange={setVal}
                   name="curruncy_symbol"
                 >
-                  <option>select currency</option>
+                  <option value="INR">Indian Rupee</option>
                   <option value="AFN">Afghan Afghani</option>
                   <option value="ALL">Albanian Lek</option>
                   <option value="DZD">Algerian Dinar</option>
@@ -545,7 +538,6 @@ const Company = () => {
                   <option value="HKD">Hong Kong Dollar</option>
                   <option value="HUF">Hungarian Forint</option>
                   <option value="ISK">Icelandic KrÃ³na</option>
-                  <option value="INR">Indian Rupee</option>
                   <option value="IDR">Indonesian Rupiah</option>
                   <option value="IRR">Iranian Rial</option>
                   <option value="IQD">Iraqi Dinar</option>
@@ -678,7 +670,11 @@ const Company = () => {
                 )}
               </div>
 
-              <button className="btn" onClick={addUserdata} disabled={loading}>
+              <button
+                className="btn btn-success"
+                onClick={addUserdata}
+                disabled={loading}
+              >
                 {loading ? (
                   <Box
                     sx={{

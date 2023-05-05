@@ -79,6 +79,7 @@ const Login = () => {
         history("/dash");
         setInpval({ ...inpval, email: "", password: "" });
       } else {
+        setLoading(false);
         toast.error("Invalid Credentials", {
           position: "top-center",
         });
@@ -88,22 +89,22 @@ const Login = () => {
 
   return (
     <>
-      <section>
+      <section className="lgn">
         <div
           className="form_data"
           style={{
             width: "600px",
-            marginLeft: "450px",
-            height: "625px",
-            marginTop: "75px",
+            // marginLeft: "450px",
+            // height: "100%",
+            // marginTop: "75px",
           }}
         >
           <div className="form_heading">
             {/* <h1>Welcome Back, Log In</h1> */}
 
-            <div className="profile">
+            {/* <div className="profile">
               <img src={user_icon} />
-            </div>
+            </div> */}
 
             <h1 className="heading mt-3">Welcome!</h1>
             <p className="text-center">
@@ -159,7 +160,7 @@ const Login = () => {
               </a>
             </div> */}
 
-            <button className="btn" onClick={loginuser} disabled={loading}>
+            <button className="btn btn-primary" onClick={loginuser} disabled={loading}>
               {loading ? (
                 <Box
                   sx={{

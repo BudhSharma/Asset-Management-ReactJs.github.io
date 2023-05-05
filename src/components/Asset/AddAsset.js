@@ -479,7 +479,7 @@ function AddAsset() {
         // const res = await data.json();
 
         if (data.status === 201) {
-          toast.success("Registration Successfully done 😃!", {
+          toast.success("Add asset successfully done 😃!", {
             position: "top-center",
           });
           setLoading(false);
@@ -829,7 +829,7 @@ function AddAsset() {
                   </div>
                 </div>
                 <button
-                  className="btn"
+                  className="btn btn-success"
                   onClick={addUserdata}
                   disabled={loading}
                 >

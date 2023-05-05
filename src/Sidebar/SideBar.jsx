@@ -19,6 +19,7 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AutoDeleteIcon from "@mui/icons-material/AutoDelete";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import ContactsIcon from "@mui/icons-material/Contacts";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 const routes = [
   {
@@ -50,7 +51,7 @@ const routes = [
   },
   {
     path: "/category",
-    name: "Category",
+    name: "Asset Category",
     icon: <FaUser />,
   },
   {
@@ -84,6 +85,11 @@ const routes = [
         icon: <AutoDeleteIcon />,
       },
     ],
+  },
+  {
+    path: "/feed",
+    name: "Feed",
+    icon: <ErrorOutlineIcon />,
   },
 ];
 
@@ -152,7 +158,7 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  Asset Management
+                  
                 </motion.h1>
               )}
             </AnimatePresence>

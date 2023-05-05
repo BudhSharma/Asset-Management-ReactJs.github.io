@@ -33,7 +33,18 @@ function ListAsset() {
     axios
       .get("https://asset-3xk6.onrender.com/asset")
       .then((response) => {
-        setNames(response.data);
+        let data = response.data;
+        // statusButtons.forEach((b) => {
+        //   data.forEach((d) => {
+        //     if (d.status == b.status) {
+        //       d["statusName"] = b.name;
+        //     } else {
+        //       d["statusName"] = "Status";
+        //     }
+        //   });
+        // });
+        setNames(data);
+        console.log(data)
       })
       .catch((error) => {
         console.log(error);
@@ -60,6 +71,10 @@ function ListAsset() {
       status: "2",
       name: "Lost",
     },
+    {
+      status:'0',
+      name:"CheckedOut"
+    }
   ];
   const updateName = () => {
     axios
@@ -95,13 +110,26 @@ function ListAsset() {
   };
   const changeAssetsStatus = (status, id) => {
     axios
-      .patch(`https://asset-3xk6.onrender.com/asset/${id}`, { status })
+      .patch(`http://localhost:8010/asset/${id}`, { status })
       .then((res) => {
-        setStatus(statusButtons.filter((btn) => btn.status == status)[0].name);
+        console.log(res)
+        // names.forEach(element => {
+        //   if(element._id == res.data._id){
+        //     element = res.data
+        //   }
+        // });
+        const d = names.map((n) => {
+          let obj = n
+          if(obj._id == id){
+            obj.status = status
+          }
+          return obj
+        })
+        setNames(d);
+        // getNames()
       })
       .catch((err) => console.log(err));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!editMode) {
@@ -184,7 +212,7 @@ function ListAsset() {
 
                 <td style={{ width: "12%" }}>
                   <Link to={`/view-asset/${name._id}/${0}`}>
-                    <button className="btn btn-outline-success">
+                    <button className="btn btn-success">
                       {" "}
                       <VisibilityIcon />
                       View Asset
@@ -194,8 +222,8 @@ function ListAsset() {
                 <td style={{ width: "13%" }}>
                   <Popup
                     trigger={
-                      <button className="btn btn-outline-warning" type="button">
-                        {status !== "-1" ? (
+                      <button className="btn btn-warning" type="button">
+                        {/* {status !== "-1" ? (
                           <>
                             <MilitaryTechIcon />
                             {status}
@@ -203,9 +231,11 @@ function ListAsset() {
                         ) : (
                           <>
                             <MilitaryTechIcon />
-                            Status
+                            {name.statusName}
                           </>
-                        )}
+                        )} */}
+                        <MilitaryTechIcon/>
+                        {statusButtons?.filter(b => b.status == name.status)[0]?.name}
                       </button>
                     }
                     position="right center"
@@ -243,7 +273,7 @@ function ListAsset() {
                     </b>
                   ) : (
                     <button
-                      className="btn btn-outline-danger"
+                      className="btn btn-danger"
                       onClick={() => onDisposeClick(name._id)}
                     >
                       {" "}

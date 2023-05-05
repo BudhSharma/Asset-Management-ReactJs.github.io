@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.App{
+  background-color: whitesmoke;
+}
+
 .main-container {
   display: flex;
 }

@@ -71,7 +71,7 @@ function DisposedAsset() {
                       <td style={{ width: "20%" }}>{s}</td>
                       <td style={{ width: "15%" }}>
                         <Link to={`/view-asset/${special._id}/${1}`}>
-                          <button className="btn btn-outline-success">
+                          <button className="btn btn-success">
                             {" "}
                             <VisibilityIcon />
                             View Asset

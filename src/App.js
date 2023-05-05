@@ -22,6 +22,7 @@ import { useEffect, useContext, useState } from "react";
 import { LoginContext } from "./components/ContextProvider/Context";
 import Header from "./components/Header";
 import UserList from "./components/UserList";
+import LabTabs from "./components/Dashboard/DashboardTab";
 
 function App() {
   const [data, setData] = useState(false);
@@ -56,7 +57,7 @@ function App() {
   }, []);
 
   return (
-    <React.Fragment>
+    <div className="App">
       {data ? (
         <>
           {/* <Header /> */}
@@ -72,6 +73,7 @@ function App() {
             <Route path="/view-asset/:id/:no" element={<ViewAsset />} />
             <Route path="/edit-asset/:id" element={<EditAsset />} />
             <Route path="/disposed-asset" element={<DisposedAsset />} />
+            <Route path="/feed" element={<LabTabs />} />
             <Route path="/register" element={<Register />} />
             <Route path="/user-list" element={<UserList />} />
             <Route path="/password-reset" element={<PasswordReset />} />
@@ -95,7 +97,7 @@ function App() {
           <CircularProgress />
         </Box>
       )}
-    </React.Fragment>
+    </div>
   );
 }
 
