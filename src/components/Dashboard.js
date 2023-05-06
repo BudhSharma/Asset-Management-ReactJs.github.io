@@ -5,6 +5,11 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import SideBar from "../Sidebar/SideBar";
 import Header from "./Header";
+import TotalAssets from "./DashboardCards/TotalAssets";
+import TotalValueOfAsset from "./DashboardCards/TotalValueOfAsset";
+import AvailableAsset from "./DashboardCards/AvailableAsset";
+import FinancialYear from "./DashboardCards/FinancialYear";
+import AssignedData from "./DashboardCards/AssignedData";
 
 const Dashboard = () => {
   const { logindata, setLoginData } = useContext(LoginContext);
@@ -44,21 +49,40 @@ const Dashboard = () => {
   return (
     <SideBar>
       <Header />
-      <div style={{ marginTop: "80px" }}>
+      <div style={{ marginTop: "80px", height:"100%" }}>
         {data ? (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <img
-              src="./man.png"
-              style={{ width: "200px", marginTop: 20 }}
-              alt=""
-            />
+          <div style={{ padding: "0 20px" }}>
             <h1>User Email: {logindata ? logindata.ValidUserOne.email : ""}</h1>
+            <div className="row mt-4">
+              <div className="col-12">
+                <h3>Assets Details</h3>
+              </div>
+              <div className="col-md-4">
+                <TotalAssets />
+              </div>
+              <div className="col-md-4">
+                <TotalValueOfAsset />
+              </div>
+              <div className="col-md-4">
+                <AvailableAsset />
+              </div>
+            </div>
+            <div className="row mt-4">
+              <div className="col-12">
+                <h3>Financial Year</h3>
+              </div>
+              <div className="col-md-4">
+                <FinancialYear />
+              </div>
+            </div>
+            <div className="row mt-4">
+              <div className="col-12">
+                <h3>Assigned Asset</h3>
+              </div>
+              <div className="col-md-4">
+                <AssignedData />
+              </div>
+            </div>
           </div>
         ) : (
           <Box

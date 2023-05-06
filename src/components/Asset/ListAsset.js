@@ -110,7 +110,7 @@ function ListAsset() {
   };
   const changeAssetsStatus = (status, id) => {
     axios
-      .patch(`http://localhost:8010/asset/${id}`, { status })
+      .patch(`https://asset-3xk6.onrender.com/asset/${id}`, { status })
       .then((res) => {
         console.log(res)
         // names.forEach(element => {
@@ -266,7 +266,7 @@ function ListAsset() {
                   </Popup>
                 </td>
                 <td style={{ width: "15%" }}>
-                  {/* <Link to={`http://localhost:8010/asset-data/${name._id}`}> */}
+                  {/* <Link to={`https://asset-3xk6.onrender.com/asset-data/${name._id}`}> */}
                   {name.disposed ? (
                     <b style={{ fontSize: "large", color: "red" }}>
                       Already Disposed

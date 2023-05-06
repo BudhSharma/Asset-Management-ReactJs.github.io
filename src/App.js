@@ -22,7 +22,7 @@ import { useEffect, useContext, useState } from "react";
 import { LoginContext } from "./components/ContextProvider/Context";
 import Header from "./components/Header";
 import UserList from "./components/UserList";
-import LabTabs from "./components/Dashboard/DashboardTab";
+import LabTabs from "./components/Feed/DashboardTab";
 
 function App() {
   const [data, setData] = useState(false);

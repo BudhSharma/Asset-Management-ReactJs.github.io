@@ -762,7 +762,7 @@ function AddAsset() {
 
                     <div className="form_input d-flex align-items-center">
                       <label htmlFor="checkOut">
-                        Check-Out Date <sup style={{ color: "red" }}>*</sup>
+                        Check-Out Date
                       </label>
                       <input
                         type="date"

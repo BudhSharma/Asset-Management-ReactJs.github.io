@@ -1,16 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
-import { BiAnalyse, BiSearch } from "react-icons/bi";
-import { BiCog } from "react-icons/bi";
-import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
-import { BsCartCheck } from "react-icons/bs";
+import { FaBars, FaHome, FaUser } from "react-icons/fa";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import CategoryIcon from "@mui/icons-material/Category";
 import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
@@ -157,9 +150,7 @@ const SideBar = ({ children }) => {
                   animate="show"
                   exit="hidden"
                   className="logo"
-                >
-                  
-                </motion.h1>
+                ></motion.h1>
               )}
             </AnimatePresence>
 

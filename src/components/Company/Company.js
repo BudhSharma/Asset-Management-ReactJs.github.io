@@ -191,7 +191,7 @@ const Company = () => {
                 </label>
                 <input
                   className="inp"
-                  type="number"
+                  type="text"
                   value={inpval.postal_code}
                   onChange={setVal}
                   name="postal_code"

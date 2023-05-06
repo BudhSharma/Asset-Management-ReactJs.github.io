@@ -1,0 +1,52 @@
+.dash-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  filter: grayscale(1);
+  opacity: 0.3;
+}
+.box {
+  width: 340px;
+  padding: 10px;
+  position: relative;
+  background: #19aade;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  height: 160px;
+}
+
+.box p {
+  margin: 0;
+  padding: 0;
+}
+
+.box p span {
+  display: block;
+  color: #fff;
+  font-size: 22px;
+}
+.box p span.two {
+  margin-top: 10px;
+}
+
+.box .button-box {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 0;
+}
+
+.button-box button {
+  margin: 0 10px;
+  background: none;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+}
